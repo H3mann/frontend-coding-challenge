@@ -49,12 +49,17 @@ class CreateEvent extends Component {
 
     onFormSubmit(e) {
       e.preventDefault();
+      const title = this.state.title
       const startTime = moment(this.state.startDate).format("hh:mm a");
       const endTime = moment(this.state.endDate).format("hh:mm a");
       const startDate = moment(this.state.startDate).format("MM-DD-YYYY");
       const endDate = moment(this.state.endDate).format("MM-DD-YYYY");
+      if(!this.state.startDate || !this.state.endDate || !title) {
+        alert('Please fill in all of the fields');
+        return;
+      }
       var event = {
-        title: this.state.title,
+        title,
         startDate,
         endDate,
         startTime,
