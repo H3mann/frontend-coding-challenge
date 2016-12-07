@@ -18,7 +18,6 @@ class App extends Component {
     var events = this.state.events;
     events.push(event);
     this.setState({events});
-    console.log(this.state.events,"+++++events in App state++++++");
   }
   render() {
     const today = moment().format("dddd, MMMM Do YYYY");
