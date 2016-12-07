@@ -49,22 +49,19 @@ class CreateEvent extends Component {
 
     onFormSubmit(e) {
       e.preventDefault();
+      //reformat the time and date
       const title = this.state.title
       const startTime = moment(this.state.startDate).format("hh:mm a");
       const endTime = moment(this.state.endDate).format("hh:mm a");
-      const startDate = moment(this.state.startDate).format("MM-DD-YYYY");
-      const endDate = moment(this.state.endDate).format("MM-DD-YYYY");
+      const startDate = moment(this.state.startDate).format("MMM Do YYYY");
+      const endDate = moment(this.state.endDate).format("MMM Do YYYY");
+
       if(!this.state.startDate || !this.state.endDate || !title) {
         alert('Please fill in all of the fields');
         return;
       }
-      var event = {
-        title,
-        startDate,
-        endDate,
-        startTime,
-        endTime
-      }
+      var event = {title, startDate, endDate, startTime, endTime}
+      //addEvent allows the nex event to be passed down a props in the eventList component
       this.props.addEvent(event);
       this.setState({startDate:'', endDate:'', title:''});
     }
